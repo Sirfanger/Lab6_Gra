@@ -39,6 +39,7 @@
             textBox4 = new TextBox();
             label6 = new Label();
             textBox5 = new TextBox();
+            button1 = new Button();
             SuspendLayout();
             // 
             // label1
@@ -74,6 +75,8 @@
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(75, 23);
             textBox1.TabIndex = 3;
+            textBox1.Text = "3";
+            textBox1.TextChanged += textBox1_TextChanged;
             // 
             // textBox2
             // 
@@ -81,6 +84,8 @@
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(75, 23);
             textBox2.TabIndex = 4;
+            textBox2.Text = "3";
+            textBox2.TextChanged += textBox2_TextChanged;
             // 
             // label4
             // 
@@ -107,6 +112,8 @@
             textBox3.Name = "textBox3";
             textBox3.Size = new Size(75, 23);
             textBox3.TabIndex = 7;
+            textBox3.Text = "0";
+            textBox3.TextChanged += textBox3_TextChanged;
             // 
             // textBox4
             // 
@@ -114,6 +121,8 @@
             textBox4.Name = "textBox4";
             textBox4.Size = new Size(75, 23);
             textBox4.TabIndex = 8;
+            textBox4.Text = "3";
+            textBox4.TextChanged += textBox4_TextChanged;
             // 
             // label6
             // 
@@ -130,12 +139,25 @@
             textBox5.Name = "textBox5";
             textBox5.Size = new Size(78, 23);
             textBox5.TabIndex = 10;
+            textBox5.Text = "30";
+            textBox5.TextChanged += textBox5_TextChanged;
+            // 
+            // button1
+            // 
+            button1.Location = new Point(545, 301);
+            button1.Name = "button1";
+            button1.Size = new Size(75, 60);
+            button1.TabIndex = 11;
+            button1.Text = "OK";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // Ustawienia
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(button1);
             Controls.Add(textBox5);
             Controls.Add(label6);
             Controls.Add(textBox4);
@@ -166,5 +188,6 @@
         private TextBox textBox4;
         private Label label6;
         private TextBox textBox5;
+        private Button button1;
     }
 }
