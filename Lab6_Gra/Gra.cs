@@ -34,6 +34,15 @@ namespace Lab6_Gra
             this.Size = new Size(600, 600);
             Panel mainPanel = new Panel { Dock = DockStyle.Fill };
             this.Controls.Add(mainPanel);
+            var layout = new TableLayoutPanel
+            {
+                Dock = DockStyle.Fill,
+                RowCount = 2,
+                ColumnCount = 1
+            };
+            layout.RowStyles.Add(new RowStyle(SizeType.Absolute, 40)); 
+            layout.RowStyles.Add(new RowStyle(SizeType.Percent, 100)); 
+            mainPanel.Controls.Add(layout);
             lblTimer = new Label
             {
                 Text = $"Pozostały czas: {form.mainczas}s",
@@ -43,7 +52,7 @@ namespace Lab6_Gra
                 Font = new Font("Arial", 12, FontStyle.Bold),
                 BackColor = Color.LightYellow
             };
-            mainPanel.Controls.Add(lblTimer);
+            layout.Controls.Add(lblTimer, 0, 0);
             plansza = new TableLayoutPanel();
             plansza.RowCount = form.mainX;
             plansza.ColumnCount = form.mainY;
@@ -53,7 +62,7 @@ namespace Lab6_Gra
             for (int j = 0; j < form.mainY; j++)
                 plansza.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100f / form.mainY));
 
-            mainPanel.Controls.Add(plansza);    
+            layout.Controls.Add(plansza, 0, 1);
 
             List<string> contents = new List<string>();
             contents.AddRange(Enumerable.Repeat("Dydelf", form.maindydlefy));
@@ -87,7 +96,7 @@ namespace Lab6_Gra
             lblTimer.Text = $"Pozostały czas: {pozostalyczas}s";
 
             if (pozostalyczas <= 0)
-                EndGame(false, "Czas minął!");
+                EndGame(false, "Czas minął! Przegrałeś D: ");
         }
         private void Field_Click(object sender, EventArgs e)
         {
@@ -105,13 +114,13 @@ namespace Lab6_Gra
                 znalezionedydlefy++;
 
                 if (znalezionedydlefy == form.maindydlefy)
-                    EndGame(true, "Wszystkie Dydełfy znalezione!");
+                    EndGame(true, "Wszystkie Dydelfy znalezione!!! Brawo!!!");
             }
             else if (content == "Krokodyl")
             {
                 btn.BackColor = Color.Red;
                 btn.Text = "🐊";
-                EndGame(false, "Trafiłeś na Krokodyla!");
+                EndGame(false, "KROKODYL AAAAAAAA!!!! PRZEGRAŁEŚ O.O");
             }
             else
             {
