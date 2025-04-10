@@ -9,6 +9,8 @@ namespace Lab6_Gra
         public int maindydlefy { get; private set; }
 
         public int mainkrokodyle { get; private set; }
+        public int mainszopy { get; private set; }
+        
         public Form1()
         {
             InitializeComponent();
@@ -29,6 +31,7 @@ namespace Lab6_Gra
             form.mainczas = mainczas;   
             form.maindydlefy = maindydlefy;
             form.mainkrokodyle = mainkrokodyle;
+            form.mainszopy = mainszopy;
             Gra noweokno = new Gra(form);
 
             
@@ -49,6 +52,7 @@ namespace Lab6_Gra
                 maindydlefy = noweokno.dydlefy;
                 mainkrokodyle = noweokno.krokodyle;
                 mainczas = noweokno.czas;
+                mainszopy = noweokno.szopy; 
             }
         }
     }

@@ -40,6 +40,8 @@
             label6 = new Label();
             textBox5 = new TextBox();
             button1 = new Button();
+            label7 = new Label();
+            textBox6 = new TextBox();
             SuspendLayout();
             // 
             // label1
@@ -152,11 +154,31 @@
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new Point(528, 126);
+            label7.Name = "label7";
+            label7.Size = new Size(38, 15);
+            label7.TabIndex = 12;
+            label7.Text = "Szopy";
+            // 
+            // textBox6
+            // 
+            textBox6.Location = new Point(508, 153);
+            textBox6.Name = "textBox6";
+            textBox6.Size = new Size(75, 23);
+            textBox6.TabIndex = 13;
+            textBox6.Text = "0";
+            textBox6.TextChanged += textBox6_TextChanged;
+            // 
             // Ustawienia
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(textBox6);
+            Controls.Add(label7);
             Controls.Add(button1);
             Controls.Add(textBox5);
             Controls.Add(label6);
@@ -189,5 +211,7 @@
         private Label label6;
         private TextBox textBox5;
         private Button button1;
+        private Label label7;
+        private TextBox textBox6;
     }
 }

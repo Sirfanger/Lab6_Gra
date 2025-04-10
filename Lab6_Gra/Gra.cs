@@ -22,6 +22,8 @@ namespace Lab6_Gra
         private Label lblTimer;
         private int pozostalyczas;
         private System.Windows.Forms.Timer gameTimer;
+        private int krokodylczas;
+        private System.Windows.Forms.Timer krokodylTimer;
 
         public Gra(Form1 form)
         {
@@ -67,6 +69,7 @@ namespace Lab6_Gra
             List<string> contents = new List<string>();
             contents.AddRange(Enumerable.Repeat("Dydelf", form.maindydlefy));
             contents.AddRange(Enumerable.Repeat("Krokodyl", form.mainkrokodyle));
+            contents.AddRange(Enumerable.Repeat("Szop", form.mainszopy));
             int total = form.mainX * form.mainY;
             contents.AddRange(Enumerable.Repeat("Puste", total - contents.Count));
             Random rng = new Random();
@@ -98,11 +101,18 @@ namespace Lab6_Gra
             if (pozostalyczas <= 0)
                 EndGame(false, "Czas minął! Przegrałeś D: ");
         }
+        private void KrokodylTimer_Tick(object sender, EventArgs e)
+        {
+            krokodylczas--;
+
+            if (krokodylczas <= 0)
+                EndGame(false, "KROKODYL!!! AAAAAAAA!!! Przegrałeś D: ");
+        }
         private void Field_Click(object sender, EventArgs e)
         {
             Button btn = sender as Button;
 
-            if (przyciski.Contains(btn)) return;
+            //if (przyciski.Contains(btn)) return;
 
             przyciski.Add(btn);
             string content = fieldContent[btn];
@@ -118,9 +128,40 @@ namespace Lab6_Gra
             }
             else if (content == "Krokodyl")
             {
-                btn.BackColor = Color.Red;
-                btn.Text = "🐊";
-                EndGame(false, "KROKODYL AAAAAAAA!!!! PRZEGRAŁEŚ O.O");
+
+                if (btn.Text == "🐊")
+                {
+                    btn.BackColor = Color.LightGray;
+                    btn.Text = "";
+                    krokodylTimer.Stop();
+
+                }
+                else
+                {
+                    krokodylczas = 2;
+                    krokodylTimer = new System.Windows.Forms.Timer();
+                    krokodylTimer.Interval = 1000;
+                    krokodylTimer.Tick += KrokodylTimer_Tick;
+                    krokodylTimer.Start();
+                    btn.BackColor = Color.Red;
+                    btn.Text = "🐊";
+                }
+
+        
+                
+
+                
+
+
+            }
+            else if (content == "Szop")
+            {
+                
+                    btn.BackColor = Color.Blue;
+                    btn.Text = "🦝";
+                
+                    
+                
             }
             else
             {
@@ -130,6 +171,7 @@ namespace Lab6_Gra
         private void EndGame(bool success, string message)
         {
             gameTimer.Stop();
+            krokodylTimer.Stop();
             MessageBox.Show(message, success ? "Wygrana!" : "Przegrana");
             this.Close();
         }

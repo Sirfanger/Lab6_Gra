@@ -19,6 +19,8 @@ namespace Lab6_Gra
         public int dydlefy { get; private set; }
 
         public int krokodyle { get; private set; }
+
+        public int szopy { get; private set; }
         public Ustawienia()
         {
             InitializeComponent();
@@ -41,6 +43,7 @@ namespace Lab6_Gra
             dydlefy = int.Parse(textBox4.Text);
             krokodyle = int.Parse(textBox3.Text);
             czas = int.Parse(textBox5.Text);
+            szopy = int.Parse(textBox6.Text);
             DialogResult = DialogResult.OK;
             Close();
         }
@@ -68,6 +71,11 @@ namespace Lab6_Gra
         private void textBox5_TextChanged(object sender, EventArgs e)
         {
             //czas = int.Parse(textBox5.Text);
+        }
+
+        private void textBox6_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
