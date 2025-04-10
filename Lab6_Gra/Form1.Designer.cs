@@ -40,9 +40,9 @@
             label1.Font = new Font("Times New Roman", 24F, FontStyle.Bold, GraphicsUnit.Point);
             label1.Location = new Point(222, 85);
             label1.Name = "label1";
-            label1.Size = new Size(337, 36);
+            label1.Size = new Size(385, 36);
             label1.TabIndex = 0;
-            label1.Text = "GDZIE JEST DYDELF";
+            label1.Text = "GDZIE JEST DYDELF???";
             // 
             // button1
             // 
