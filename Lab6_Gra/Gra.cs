@@ -24,6 +24,8 @@ namespace Lab6_Gra
         private System.Windows.Forms.Timer gameTimer;
         private int krokodylczas;
         private System.Windows.Forms.Timer krokodylTimer;
+        private int szopczas;
+        private System.Windows.Forms.Timer szopTimer;
 
         public Gra(Form1 form)
         {
@@ -108,6 +110,12 @@ namespace Lab6_Gra
             if (krokodylczas <= 0)
                 EndGame(false, "KROKODYL!!! AAAAAAAA!!! Przegrałeś D: ");
         }
+        private void SzopTimer_Tick(object sender, EventArgs e)
+        {
+            szopczas--;
+
+            
+        }
         private void Field_Click(object sender, EventArgs e)
         {
             Button btn = sender as Button;
@@ -145,6 +153,7 @@ namespace Lab6_Gra
                     krokodylTimer.Start();
                     btn.BackColor = Color.Red;
                     btn.Text = "🐊";
+
                 }
 
         
@@ -157,11 +166,21 @@ namespace Lab6_Gra
             else if (content == "Szop")
             {
                 
-                    btn.BackColor = Color.Blue;
-                    btn.Text = "🦝";
-                
-                    
-                
+                btn.BackColor = Color.Blue;
+                btn.Text = "🦝";
+                szopczas = 2;
+                szopTimer = new System.Windows.Forms.Timer();
+                szopTimer.Interval = 1000;
+                szopTimer.Tick += SzopTimer_Tick;
+                szopTimer.Start();
+                if (szopczas <= 0)
+                {
+                    szopTimer.Stop();
+                    EndGame(false, "Szop!!! Przegrałeś D: ");
+                }
+
+
+
             }
             else
             {
